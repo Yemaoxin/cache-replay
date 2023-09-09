@@ -21,17 +21,28 @@
 #   Default data size: 1 KB records (10 fields, 100 bytes each, plus key)
 #   Request distribution: zipfian
 
-recordcount=1000
-operationcount=1000
+recordcount=20000000
+operationcount=40000000
 workload=site.ycsb.workloads.CoreWorkload
 
 readallfields=true
+fieldlengthdistribution=zipfian
+writeallfields=true
+# The number of fields in a record
+fieldcount=3
+
+# The size of each field (in bytes)
+fieldlength=200
+hotspotdatafraction=0.2
+
+# Percentage of operations that access the hot set
+hotspotopnfraction=0.8
 
 readproportion=0.5
 updateproportion=0
 scanproportion=0
 insertproportion=0
 readmodifywriteproportion=0.5
-
+hdrhistogram.percentiles=50,90,95,99,99.9,99.99
 requestdistribution=zipfian
 

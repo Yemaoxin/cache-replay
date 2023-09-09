@@ -26,21 +26,32 @@
 # instead interspersed with posts from lots of other threads. The way the YCSB client works is that it will pick a start
 # key, and then request a number of records; this works fine even for hashed insertion.
 
-recordcount=1000
-operationcount=1000
+recordcount=20000000
+operationcount=40000000
 workload=site.ycsb.workloads.CoreWorkload
 
 readallfields=true
+fieldlengthdistribution=zipfian
+writeallfields=true
+# The number of fields in a record
+fieldcount=3
+
+# The size of each field (in bytes)
+fieldlength=200
+hotspotdatafraction=0.2
+
+# Percentage of operations that access the hot set
+hotspotopnfraction=0.8
 
 readproportion=0
 updateproportion=0
 scanproportion=0.95
 insertproportion=0.05
 
-requestdistribution=zipfian
+requestdistribution=uniform
 
 maxscanlength=100
 
-scanlengthdistribution=uniform
-
+scanlengthdistribution=zipfian
+hdrhistogram.percentiles=50,90,95,99,99.9,99.99
 
